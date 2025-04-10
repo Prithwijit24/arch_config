@@ -1,0 +1,520 @@
+* {
+    /* `otf-font-awesome` is required to be installed for icons */
+    border: none;
+    border-radius: 4px;
+    font-family: FontAwesome, Roboto, Helvetica, Arial, sans-serif;
+    font-size: 13px;
+}
+
+window#waybar {
+    background-color: rgba(43, 48, 59, 0.2);
+    color: #ffffff;
+    transition-property: background-color;
+    transition-duration: .5s;
+    border-radius: 0;
+}
+
+window#waybar.hidden {
+    opacity: 0.2;
+}
+
+/*
+window#waybar.empty {
+    background-color: transparent;
+}
+window#waybar.solo {
+    background-color: #FFFFFF;
+}
+*/
+
+window#waybar.termite {
+    background-color: #3F3F3F;
+}
+
+window#waybar.chromium {
+    background-color: #000000;
+    border: none;
+}
+
+button {
+    /* Use box-shadow instead of border so the text isn't offset */
+    box-shadow: inset 2px 0px 2px gray, inset -2px 0px 2px black;
+    /* Avoid rounded borders under each button name */
+    border: none;
+    border-radius: 10px;
+}
+
+/* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
+button:hover {
+    background: inherit;
+    box-shadow: inset 0 -3px 3px #ffffff;
+}
+
+/* you can set a style on hover for any module like this */
+#pulseaudio:hover {
+    background-color: #a37800;
+}
+
+#workspaces button {
+    padding: 0 5px;
+    background-color: transparent;
+    color: #ffffff;
+}
+
+#workspaces button:hover {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+#workspaces button.active {
+    background-color: #64727D;
+    box-shadow: inset 0 -3px 5px #ffffff;
+}
+
+#workspaces button.urgent {
+    background-color: #eb4d4b;
+}
+
+#mode {
+    background-color: #64727D;
+    box-shadow: inset 0 -3px #ffffff;
+}
+
+#custom-location,
+#custom-temperature,
+#custom-humidity,
+#custom-precipitation,
+#custom-wifi,
+#custom-time_based_icon,
+#clock,
+#battery,
+#cpu,
+#memory,
+#disk,
+#temperature,
+#backlight,
+#network,
+#pulseaudio,
+#wireplumber,
+#custom-media,
+#tray,
+#mode,
+#idle_inhibitor,
+#scratchpad,
+#bluetooth,
+#power-profiles-daemon,
+#mpd {
+    padding: 5px 15px;
+    color: #ffffff;
+    border-radius: 15px;
+    box-shadow: inset 2px 2px 5px rgba(255, 255, 255, 0.5), inset -2px -2px 2px rgba(0,0,0,0.7);
+	min-width: 50px;
+}
+
+#window {
+    font-family: "Font Awesome 6 Free", sans-serif;
+    font-size: 20px;
+    font-weight: bold; /* Lilita One is naturally bold */
+    color: #ffffff; /* Adjust text color */
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    padding: 5px 20px;
+    border-radius: 20px;
+}
+
+
+#workspaces {
+    margin: 0 4px;
+}
+
+/* If workspaces is the leftmost module, omit left margin */
+.modules-left > widget:first-child > #workspaces {
+    margin-left: 0;
+}
+
+/* If workspaces is the rightmost module, omit right margin */
+.modules-right > widget:last-child > #workspaces {
+    margin-right: 0;
+}
+
+#clock {
+    background-color: #405D72;
+    font-weight: bold;
+}
+
+#battery {
+    background-color: #96EFFF;
+    color: #1C1678;
+    font-weight: bold;
+}
+
+#battery.good {
+    background-color: #96EFFF; 
+    font-weight: bold;
+}
+
+#battery.warning {
+    background-color: #EC7FA9; 
+    font-weight: bold;
+}
+
+#battery.critical {
+    color: #FFDFEF;
+    background-color: #BE5985;
+    font-weight: bold;
+}
+
+/* Default Bluetooth (ON) - Blue */
+#bluetooth {
+    background-color: #0D92F4;
+    color: #001A6E; 
+    font-weight: bold;
+}
+
+/* Bluetooth OFF - Gray */
+#bluetooth.off {
+    background-color: #bdbdbd;
+    font-weight: bold;
+}
+
+/* Bluetooth Disabled - Dark Gray */
+#bluetooth.disabled {
+    background-color: #757575;
+    font-weight: bold;
+
+}
+
+
+
+
+
+
+#battery.charging, #battery.plugged {
+    color: #ffffff;
+    background-color: #26A65B;
+    font-weight: bold;
+}
+
+@keyframes blink {
+    to {
+        background-color: #ffffff;
+        color: #000000;
+    }
+}
+
+/* Using steps() instead of linear as a timing function to limit cpu usage */
+#battery.critical:not(.charging) {
+    background-color: #f53c3c;
+    color: #ffffff;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: steps(12);
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+#power-profiles-daemon {
+    padding-right: 15px;
+}
+
+#power-profiles-daemon.performance {
+    background-color: #f53c3c;
+    color: #ffffff;
+}
+
+#power-profiles-daemon.balanced {
+    background-color: #2980b9;
+    color: #ffffff;
+}
+#custom-time_based_icon {
+    background-color: #264653; /* Dark Blue */
+    font-weight: bold;
+}
+
+#custom-location {
+    background-color: #264653;
+    font-weight: bold;
+}
+
+#custom-location.day {
+    background-color: #D3E671;
+    font-weight: bold;
+    color: #443627;
+}
+
+#custom-temperature {                                                       
+    background-color: #006769;                                           
+    font-weight: bold;                                                   
+}                                                                        
+                                                                         
+#custom-temperature.day {                                                   
+    background-color: #FF9B17;                                           
+    font-weight: bold;                                                   
+    color: #7D0A0A;                                                      
+}  
+
+#custom-humidity.good {
+    background-color: #FFD0EC;
+    font-weight: bold;
+    color: #1B1A55;
+}
+
+#custom-humidity.tolerable {
+    background-color: #9EC6F3;
+    font-weight: bold;
+    color: #1B1A55;
+}
+
+#custom-humidity.extreme {
+    background-color: #5C2FC2;
+    font-weight: bold;
+}
+
+#custom-precipitation {                                                                                                                             
+    background-color: #FBFBFB;                                           
+    font-weight: bold;       
+    color: #123458;    
+}                                                                        
+                                                                         
+#custom-precipitation.rainy {                                                                                                                         
+    background-color: #C68EFD;                                           
+    font-weight: bold;       
+    color: #0C0950;                                                      
+}
+
+
+#power-profiles-daemon.power-saver {
+    background-color: #2ecc71;
+    color: #000000;
+}
+
+label:active {
+    background-color: #000000;
+}
+
+#cpu {
+    background-color: #FCF596;
+    color: #4C4B16;
+    font-weight: bold;
+}
+
+#cpu.normal {
+    background-color: #E5D0AC; 
+    font-weight: bold;
+}
+
+#cpu.warning {
+    background-color: #FEEC37; 
+    font-weight: bold;
+}
+
+#cpu.critical {
+    color: #FFCCEA;
+    background-color: #FF4545;
+    font-weight: bold;
+}
+
+
+
+
+#memory {
+    color: #000B58;
+    background-color: #EEF1DA;
+    font-weight: bold;
+}
+
+#memory.normal {
+    background-color: #DEF9C4; 
+    font-weight: bold;
+}
+
+#memory.warning {
+    background-color: #9CDBA6; 
+    font-weight: bold;
+}
+
+#memory.critical {
+    color: #FFCFEF;
+    background-color: #A02334;
+    font-weight: bold;
+}
+
+
+#disk {
+    background-color: #964B00;
+    font-weight: bold;
+}
+/* #backlight { */ 
+/*      color: #18230F; */ 
+/*      background-color: #EBE8DB; */ 
+/* } */ 
+#backlight {
+    background-color: #fbc02d;
+    color: #443627; /* Soft orange */
+    font-weight: bold;
+}
+
+/* Low brightness (0-30%) */
+#backlight.low {
+    background-color: #ff9800; /* Darker orange */
+    font-weight: bold;
+}
+
+/* Medium brightness (31-70%) */
+#backlight.medium {
+    background-color: #ff9800; /* Bright yellow */
+    font-weight: bold;
+}
+
+/* High brightness (71-100%) */
+#backlight.high {
+    background-color: #ffffff; /* White */
+    font-weight: bold;
+}
+
+
+#network.wifi {
+    color: #4B164C;
+    background-color: #EABDE6;
+    font-weight: bold;
+}
+
+#network.disconnected {
+    background-color: #f53c3c;
+    font-weight: bold;
+}
+
+#pulseaudio {
+    background-color: rgba(0,0,0,0.2);
+    color: #ffffff;
+    font-weight: bold;
+}
+
+#pulseaudio.muted {
+    background-color: #90b1b1;
+    color: #2a5c45;
+    font-weight: bold;
+}
+
+#wireplumber {
+    background-color: #fff0f5;
+    color: #000000;
+}
+
+#wireplumber.muted {
+    background-color: #f53c3c;
+}
+
+#custom-media {
+    background-color: #66cc99;
+    color: #2a5c45;
+    min-width: 100px;
+}
+
+#custom-media.custom-spotify {
+    background-color: #66cc99;
+}
+
+#custom-media.custom-vlc {
+    background-color: #ffa000;
+}
+
+#temperature {
+    background-color: rgba(0,0,0,0.2);
+    font-weight: bold;
+}
+
+#temperature.critical {
+    background-color: #eb4d4b;
+    font-weight: bold;
+}
+
+#tray {
+    background-color: #2980b9;
+}
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+    background-color: #eb4d4b;
+}
+
+#idle_inhibitor {
+    background-color: #2d3436;
+}
+
+#idle_inhibitor.activated {
+    background-color: #ecf0f1;
+    color: #2d3436;
+}
+
+#mpd {
+    background-color: #66cc99;
+    color: #2a5c45;
+}
+
+#mpd.disconnected {
+    background-color: #f53c3c;
+}
+
+#mpd.stopped {
+    background-color: #90b1b1;
+}
+
+#mpd.paused {
+    background-color: #51a37a;
+}
+
+#language {
+    background: #00b093;
+    color: #740864;
+    padding: 0 5px;
+    margin: 0 5px;
+    min-width: 16px;
+}
+
+#keyboard-state {
+    background: #97e1ad;
+    color: #000000;
+    padding: 0 0px;
+    margin: 0 5px;
+    min-width: 16px;
+}
+
+#keyboard-state > label {
+    padding: 0 5px;
+}
+
+#keyboard-state > label.locked {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+#scratchpad {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+#scratchpad.empty {
+	background-color: transparent;
+}
+
+#privacy {
+    padding: 0;
+}
+
+#privacy-item {
+    padding: 0 5px;
+    color: white;
+}
+
+#privacy-item.screenshare {
+    background-color: #cf5700;
+}
+
+#privacy-item.audio-in {
+    background-color: #1ca000;
+}
+
+#privacy-item.audio-out {
+    background-color: #0069d4;
+}

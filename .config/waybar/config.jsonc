@@ -1,0 +1,167 @@
+{
+        "layer": "top",
+        "position": "top",
+        "reload_style_on_change": true,
+        "modules-left": ["custom/weather","custom/location","custom/temperature","custom/humidity","custom/precipitation","hyprland/workspaces","hyprland/window"], 
+        "modules-center": ["pulseaudio", "bluetooth", "backlight"],
+        "modules-right": ["memory","cpu","network","battery","clock"],
+
+
+        "hyprland/workspaces": {
+            "format": "{icon}",
+            "format-icons": {
+                "default": "",                                                                                           
+	         "active": ""   
+            }
+        },
+
+	"hyprland/window": {
+		"format": "<span font='9' rise='-4444'>{}</span>"
+	},
+
+        "clock": {
+            "format": "{:%I:%M:%S %p} ",
+            "interval": 1,   
+            "tooltip-format": "<tt>{calendar}</tt>",
+            "calendar": {
+                "format": {
+                    "today": "<span color='#ff0000'><b>{}</b></span>"
+                }
+            }
+        },
+
+	"pulseaudio": {                                                                                                                   
+        "format": "{volume}% {icon}",                                                                                 
+        "format-bluetooth": "{volume}% {icon} {format_source}",                                                                      
+        "format-bluetooth-muted": " {icon} {format_source}",                                                                        
+        "format-muted": " {format_source}",                                                                                          
+        "format-source": "{volume}% ",                                                                                               
+        "format-source-muted": "",                                                                                                   
+        "format-icons": {                                                                                                             
+            "headphone": "",                                                                                                         
+            "hands-free": "",                                                                                                        
+            "headset": "",                                                                                                           
+            "phone": "",                                                                                                             
+            "portable": "",                                                                                                          
+            "car": "",                                                                                                          
+            "default": ["", "", ""]                                                                                                },
+		"on-click": "pavucontrol"},
+	
+	"network": {
+	    "format-wifi": "{signalStrength}%  ↓{bandwidthDownBits} ↑{bandwidthUpBits}",
+	    "format-ethernet": " ↓{bandwidthDownBits} ↑{bandwidthUpBits}",
+	    "format-disconnected": "",
+	    "tooltip-format-disconnected": "Error",
+	    "tooltip-format-wifi": "{essid} ({signalStrength}%) \n↓{bandwidthDownBits} ↑{bandwidthUpBits}",
+	    "tooltip-format-ethernet": "{ifname} 🖧\n↓{bandwidthDownBits} ↑{bandwidthUpBits}",
+	    "on-click": "kitty nmtui"
+	},
+
+        "bluetooth": {
+            "format-on": "󰂯 {status}",
+            "format-off": "BT-off",
+            "format-disabled": "󰂲",
+            "format-connected-battery": "{device_battery_percentage}% 󰂯",
+            "states": {
+    		    "off": "off",
+        	    "disabled": "disabled"
+	    },
+            "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
+            "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
+            "tooltip-format-enumerate-connected": "{device_alias}\n{device_address}",
+            "tooltip-format-enumerate-connected-battery": "{device_alias}\n{device_address}\n{device_battery_percentage}%",
+            "on-click": "blueman-manager"
+        }, 
+        "battery": {
+            "interval":1,
+            "states": {
+                "good": 95,
+                "warning": 50,
+                "critical": 20
+            },
+            "format": "{capacity}% {icon}",
+            "format-charging": "{capacity}% 󰂄",
+            "format-plugged": "{capacity}% 󰂄 ",
+            "format-alt": "{time} {icon}",
+            "format-icons": [
+                "󰁻",
+            "󰁼",
+            "󰁾",
+            "󰂀",
+            "󰂂",
+            "󰁹"
+            ]
+        },
+        "cpu": {
+            "format": "CPU : {usage}%  ",
+	    "interval": 1,
+            "tooltip": true,
+            "states": {
+		    "normal": 30,
+        	    "warning": 60,
+        	    "critical": 90
+	    }
+        },
+        "memory": {
+            "format": "RAM : {}% \uf1c0",
+	    "interval": 1,
+	    "states": {
+                    "normal": 30,
+                    "warning": 50,
+                    "critical": 70
+            }
+        },
+
+	"custom/weather": {                                                                                                          
+            "format": "{text}",                                                                                                          
+            "tooltip": false,                                                                                                            
+            "interval": 1800,                                                                                                               
+            "exec": "$HOME/.config/waybar/scripts/weather.py",                                                                                                   
+            "return-type": "json"                                                                                                        
+        }, 
+
+
+	"custom/location": {
+	    "format": "{text}",
+	    "tooltip": false,
+	    "interval": 1800,
+	    "exec": "$HOME/.config/waybar/scripts/location.py",
+	    "return-type": "json"
+	},
+
+	"custom/temperature": {
+            "format": "{text}",
+            "tooltip": false,
+            "interval": 1800,
+            "exec": "$HOME/.config/waybar/scripts/temp.py",
+            "return-type": "json"
+        },
+
+	"custom/humidity": {
+            "format": "{text}",
+            "tooltip": false,
+            "interval": 1800,
+            "exec": "$HOME/.config/waybar/scripts/humidity.py",
+            "return-type": "json"
+        },
+
+	"custom/precipitation": {
+            "format": "{text}",
+            "interval": 1800,
+            "exec": "$HOME/.config/waybar/scripts/precipitation.py",
+            "return-type": "json"
+        },
+
+"backlight": { 
+	 "device": "acpi_video1",                                                                                                   
+        "format": "{percent}% {icon}",                                                                                                
+        "format-icons": ["", "", "", "", "", "", "", "", ""],
+        "states": {
+        	"low": 30,
+        	"medium": 70,
+        	"high": 100
+    }
+   }
+
+ 
+} 

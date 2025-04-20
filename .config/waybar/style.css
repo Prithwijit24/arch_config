@@ -7,15 +7,15 @@
 }
 
 window#waybar {
-    background-color: rgba(43, 48, 59, 0.2);
+    background-color: rgba(43, 48, 59, 0.9);
     color: #ffffff;
     transition-property: background-color;
     transition-duration: .5s;
-    border-radius: 0;
+    border-radius: 10;
 }
 
 window#waybar.hidden {
-    opacity: 0.2;
+    opacity: 0.9;
 }
 
 /*
@@ -56,7 +56,7 @@ button:hover {
 }
 
 #workspaces button {
-    padding: 0 5px;
+    padding: 0px 5px;
     background-color: transparent;
     color: #ffffff;
 }
@@ -79,6 +79,7 @@ button:hover {
     box-shadow: inset 0 -3px #ffffff;
 }
 
+#custom-icon,
 #custom-location,
 #custom-temperature,
 #custom-humidity,
@@ -102,6 +103,8 @@ button:hover {
 #scratchpad,
 #bluetooth,
 #power-profiles-daemon,
+
+
 #mpd {
     padding: 5px 15px;
     color: #ffffff;
@@ -109,7 +112,6 @@ button:hover {
     box-shadow: inset 2px 2px 5px rgba(255, 255, 255, 0.5), inset -2px -2px 2px rgba(0,0,0,0.7);
 	min-width: 50px;
 }
-
 #window {
     font-family: "Font Awesome 6 Free", sans-serif;
     font-size: 20px;
@@ -224,6 +226,14 @@ button:hover {
     background-color: #2980b9;
     color: #ffffff;
 }
+
+#custom-icon{
+    font-weight: bold;
+    background-color: #FFDBDB;
+    color: #3A59D1;
+
+}
+
 #custom-time_based_icon {
     background-color: #264653; /* Dark Blue */
     font-weight: bold;
@@ -469,25 +479,36 @@ label:active {
 #language {
     background: #00b093;
     color: #740864;
-    padding: 0 5px;
-    margin: 0 5px;
+    padding: 0px 5px;
+    margin: 0px 5px;
     min-width: 16px;
 }
 
-#keyboard-state {
-    background: #97e1ad;
-    color: #000000;
-    padding: 0 0px;
-    margin: 0 5px;
-    min-width: 16px;
-}
+/* #keyboard-state { */
+/*     background: #97e1ad; */
+/*     color: #000000; */
+/*     margin: 0px 5px; */ 
+/*     border-radius: 50%; */
+/*     box-shadow: inset 2px 2px 5px rgba(255, 255, 255, 0.5), inset -2px -2px 2px rgba(0,0,0,0.7); */ 
+/* } */
 
 #keyboard-state > label {
-    padding: 0 5px;
+    background: #97e1ad; 
+    padding: 0px 0px;
+    margin: 0px 5px;
+    color: black;
+    min-width: 30px;
+        box-shadow: inset 2px 2px 5px rgba(255, 255, 255, 0.5), inset -2px -2px 2px rgba(0,0,0,0.7); 
+    border-radius: 50%;
+    text-align: justify;
 }
 
 #keyboard-state > label.locked {
-    background: rgba(0, 0, 0, 0.2);
+    /* min-width: 30px; */
+    background: #FF0B55;
+        box-shadow: inset 2px 2px 5px rgba(255, 255, 255, 0.5), inset -2px -2px 2px rgba(0,0,0,0.7);
+    border-radius: 50%;
+    text-align: justify;
 }
 
 #scratchpad {
@@ -503,7 +524,7 @@ label:active {
 }
 
 #privacy-item {
-    padding: 0 5px;
+    padding: 0px 5px;
     color: white;
 }
 

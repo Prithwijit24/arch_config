@@ -2,9 +2,9 @@
         "layer": "top",
         "position": "top",
         "reload_style_on_change": true,
-        "modules-left": ["custom/weather","custom/location","custom/temperature","custom/humidity","custom/precipitation","hyprland/workspaces","hyprland/window"], 
+        "modules-left": ["custom/icon","custom/weather","custom/location","custom/temperature","custom/humidity","custom/precipitation","hyprland/workspaces","hyprland/window"], 
         "modules-center": ["pulseaudio", "bluetooth", "backlight"],
-        "modules-right": ["memory","cpu","network","battery","clock"],
+        "modules-right": ["memory","cpu","network","battery","clock","keyboard-state"],
 
 
         "hyprland/workspaces": {
@@ -111,7 +111,12 @@
                     "critical": 70
             }
         },
+	
+	"custom/icon": {
+		"format": "󰣇 Arch BTW"
+	},
 
+	
 	"custom/weather": {                                                                                                          
             "format": "{text}",                                                                                                          
             "tooltip": false,                                                                                                            
@@ -149,19 +154,29 @@
             "format": "{text}",
             "interval": 1800,
             "exec": "$HOME/.config/waybar/scripts/precipitation.py",
-            "return-type": "json"
+            "return-type": "json",
+	    "on-click": "notify-send 'weather' \"$(python $HOME/.config/waybar/scripts/precipitation.py | jq -r .tooltip)\""
         },
 
-"backlight": { 
-	 "device": "acpi_video1",                                                                                                   
-        "format": "{percent}% {icon}",                                                                                                
-        "format-icons": ["", "", "", "", "", "", "", "", ""],
-        "states": {
-        	"low": 30,
-        	"medium": 70,
-        	"high": 100
-    }
-   }
+	"backlight": { 
+	    "device": "acpi_video1",                                                                                                   
+	    "format": "{percent}% {icon}",                                                                                                
+	    "format-icons": ["", "", "", "", "", "", "", "", ""],
+	    "states": {
+		"low": 30,
+		"medium": 70,
+		"high": 100
+              }
+        },
 
+	"keyboard-state": {
+		"numlock": true,
+		"capslock": false,
+		"format": "{icon}",
+		"format-icons": {
+			"locked": "",
+			"unlocked": ""
+		}
+}
  
 } 

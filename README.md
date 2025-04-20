@@ -8,7 +8,7 @@ It contains all the config files for -
 
 **Packages ---**<br>
      1. waybar
-     ![image](https://github.com/user-attachments/assets/ecec5b11-bbc5-46d7-9433-345b459be018)
+     ![image](https://github.com/user-attachments/assets/54ea71a9-c27b-435a-8275-e79981bb6e81)
 
      2. fastfetch
   ![image](https://github.com/user-attachments/assets/e46c043d-02dd-4640-aa41-d09ee5709baf)
